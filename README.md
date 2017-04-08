@@ -3,7 +3,7 @@
 
 [![NPM](https://nodei.co/npm/html-to-json.png?downloads=true)](https://www.npmjs.com/package/html-to-json)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-html-to-json/build/screenCapture.buildNpmdoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-html-to-json%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-html-to-json/build/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-html-to-json/build/screenCapture.buildApidoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-html-to-json%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-html-to-json/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-html-to-json/build/screenCapture.npmPackageListing.svg)
 
