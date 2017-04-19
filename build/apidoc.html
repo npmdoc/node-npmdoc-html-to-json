@@ -136,6 +136,12 @@
 
         </li>
 
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">html-to-json.</span>htmlToJson</span>
+
+        </li>
+
     </ol></li>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.html-to-json.ParseContext">module html-to-json.ParseContext</a><ol>
@@ -256,6 +262,73 @@
             <a class="apidocElementLiA" href="#apidoc.element.html-to-json.Parser.prototype.request">
             function <span class="apidocSignatureSpan">html-to-json.Parser.prototype.</span>request
             <span class="apidocSignatureSpan">(options, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.html-to-json.htmlToJson">module html-to-json.htmlToJson</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-json.htmlToJson.ParseContext">
+            function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>ParseContext
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-json.htmlToJson.Parser">
+            function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>Parser
+            <span class="apidocSignatureSpan">(filter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-json.htmlToJson.batch">
+            function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>batch
+            <span class="apidocSignatureSpan">(html, dictionary, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-json.htmlToJson.createMethod">
+            function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>createMethod
+            <span class="apidocSignatureSpan">(filter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-json.htmlToJson.createParser">
+            function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>createParser
+            <span class="apidocSignatureSpan">(filter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-json.htmlToJson.parse">
+            function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>parse
+            <span class="apidocSignatureSpan">(html, filter, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.html-to-json.htmlToJson.request">
+            function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>request
+            <span class="apidocSignatureSpan">(options, filter, callback)</span>
             </a>
 
         </li>
@@ -532,6 +605,8 @@ var promise = htmlToJson.request(&#x27;http://prolificinteractive.com/team&#x27;
   return $img.attr(&#x27;src&#x27;);
 ...</pre></li>
     </ul>
+
+
 
 
 
@@ -913,6 +988,278 @@ var promise = htmlToJson.parse(&#x27;&#x3c;div&#x3e;content&#x3c;/div&#x3e;&#x27
     <ul>
     <li>description and source-code<pre class="apidocCodePre">request = function (options, callback) {
   return methods.request(options, this.filter, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+});
+
+promise.done(function (result) {
+//Works as well
+});
+```
+
+## htmlToJson.<span class="apidocCodeKeywordSpan">request</span>(requestOptions, filter, [callback]) -&#x3e; promise
+
+The `request()` method takes options for a call to the [request](https://github.com/request/request) library and a filter, then
+returns the filtered response body.
+
+```javascript
+var promise = htmlToJson.request(&#x27;http://prolificinteractive.com/team&#x27;, {
+&#x27;images&#x27;: [&#x27;img&#x27;, function ($img) {
+  return $img.attr(&#x27;src&#x27;);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.html-to-json.htmlToJson" id="apidoc.module.html-to-json.htmlToJson">module html-to-json.htmlToJson</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-json.htmlToJson.ParseContext" id="apidoc.element.html-to-json.htmlToJson.ParseContext">
+        function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>ParseContext
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ParseContext(options) {
+  var context = this;
+
+  _.defaults(this, options, {
+    $container: null,
+    $: null,
+    filter: {},
+    parent: null
+  });
+
+  this.promises = Object.create(this.parent? this.parent.promises: {});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-json.htmlToJson.Parser" id="apidoc.element.html-to-json.htmlToJson.Parser">
+        function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>Parser
+        <span class="apidocSignatureSpan">(filter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Parser(filter) {
+  this.filter = filter;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var parseFoo = htmlToJson.createMethod({
+&#x27;foo&#x27;: function ($doc) {
+  return $doc.find(&#x27;#foo&#x27;).bar();
+}
+});
+```
+
+## htmlToJson.createParser(filter), new htmlToJson.<span class="apidocCodeKeywordSpan">Parser</span>(filter)
+
+For the sake of reusability, creates an object with `.parse` and `.request` helper methods, which use the passed filter. For example
+:
+
+```javascript
+var linkParser = htmlToJson.createParser([&#x27;a[href]&#x27;, {
+&#x27;text&#x27;: function ($a) {
+  return $a.text();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-json.htmlToJson.batch" id="apidoc.element.html-to-json.htmlToJson.batch">
+        function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>batch
+        <span class="apidocSignatureSpan">(html, dictionary, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function batch(html, dictionary, callback) {
+  var promise;
+  var $ = cheerio.load(html);
+  var context = new ParseContext({
+    $: $,
+    $container: $.root()
+  });
+
+  promise = Promise.props(_.mapValues(dictionary, function (filter) {
+    // Filter is wrapped by .createParser or .createMethod
+    if (filter.filter) {
+      filter = filter.filter;
+    }
+
+    context.filter = filter;
+
+    return context.parse();
+  }));
+
+  return callbackify(promise, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return $img.attr(&#x27;src&#x27;);
+  }]
+}, function (err, result) {
+  console.log(result);
+});
+```
+
+## htmlToJson.<span class="apidocCodeKeywordSpan">batch</span>(html, dictionary, [callback]) -&#x3e; promise
+
+Performs many parsing operations against one HTML string. This transforms the HTML into a DOM only once instead of for each filter
+ in the dictionary, which can quickly get expensive in terms of processing. This also allows you to break your filters up into more
+ granular components and mix and match them as you please.
+
+The values in the dictionary can be `htmlToJson.Parser` objects, generated methods from `htmlToJson.createMethod`, or naked filters
+ that you might normally pass into `htmlToJson.parse`. For example:
+
+```javascript
+return getProlificHomepage().then(function (html) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-json.htmlToJson.createMethod" id="apidoc.element.html-to-json.htmlToJson.createMethod">
+        function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>createMethod
+        <span class="apidocSignatureSpan">(filter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createMethod = function (filter) {
+  return method(filter);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  &#x27;name&#x27;: function ($section) {
+    return $section.text();
+  },
+  &#x27;link&#x27;: function ($section) {
+    return $section.attr(&#x27;href&#x27;);
+  }
+}]),
+offices: htmlToJson.<span class="apidocCodeKeywordSpan">createMethod</span>([&#x27;.office&#x27;, {
+  &#x27;location&#x27;: function ($office) {
+    return $office.find(&#x27;.location&#x27;).text();
+  },
+  &#x27;phone&#x27;: function ($office) {
+    return $office.find(&#x27;.phone&#x27;).text();
+  }
+}]),
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-json.htmlToJson.createParser" id="apidoc.element.html-to-json.htmlToJson.createParser">
+        function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>createParser
+        <span class="apidocSignatureSpan">(filter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createParser = function (filter) {
+  return new this.Parser(filter);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Performs many parsing operations against one HTML string. This transforms the HTML into a DOM only once instead of for each filter
+ in the dictionary, which can quickly get expensive in terms of processing. This also allows you to break your filters up into more
+ granular components and mix and match them as you please.
+
+The values in the dictionary can be `htmlToJson.Parser` objects, generated methods from `htmlToJson.createMethod`, or naked filters
+ that you might normally pass into `htmlToJson.parse`. For example:
+
+```javascript
+return getProlificHomepage().then(function (html) {
+return htmlToJson.batch(html, {
+  sections: htmlToJson.<span class="apidocCodeKeywordSpan">createParser</span>([&#x27;#primary-nav a&#x27;, {
+    &#x27;name&#x27;: function ($section) {
+      return $section.text();
+    },
+    &#x27;link&#x27;: function ($section) {
+      return $section.attr(&#x27;href&#x27;);
+    }
+  }]),
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-json.htmlToJson.parse" id="apidoc.element.html-to-json.htmlToJson.parse">
+        function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>parse
+        <span class="apidocSignatureSpan">(html, filter, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(html, filter, callback) {
+  var isCheerioObject = typeof html === &#x27;object&#x27; &#x26;&#x26; html._root._root;
+
+  if (typeof html !== &#x27;string&#x27; &#x26;&#x26; !isCheerioObject) {
+    throw new Error(&#x27;HTML string required&#x27;);
+  }
+
+  var $ = cheerio.load(html);
+
+  var parseContext = new ParseContext({
+    $: $,
+    $container: isCheerioObject? html: $.root(),
+    filter: filter
+  });
+
+  return callbackify(parseContext.parse(), callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Parses HTML strings into objects using flexible, composable filters.
+
+## Installation
+
+`npm install html-to-json`
+
+## htmlToJson.<span class="apidocCodeKeywordSpan">parse</span>(html, filter, [callback]) -&#x3e; promise
+
+The `parse()` method takes a string of HTML, and a filter, and responds with the filtered data. This supports both callbacks and
+ promises.
+
+```javascript
+var promise = htmlToJson.parse(&#x27;&#x3c;div&#x3e;content&#x3c;/div&#x3e;&#x27;, {
+&#x27;text&#x27;: function ($doc) {
+  return $doc.find(&#x27;div&#x27;).text();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.html-to-json.htmlToJson.request" id="apidoc.element.html-to-json.htmlToJson.request">
+        function <span class="apidocSignatureSpan">html-to-json.htmlToJson.</span>request
+        <span class="apidocSignatureSpan">(options, filter, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">request = function (options, filter, callback) {
+  var promise;
+
+  promise = new Promise(function (resolve, reject) {
+    request(options, function (err, response) {
+      if (err) {
+        return reject(err);
+      }
+
+      resolve(response);
+    });
+  });
+
+  promise = promise.then(function (response) {
+    return parse(response.body, filter);
+  });
+
+  return callbackify(promise, callback);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 });
